@@ -5,7 +5,13 @@ import cors from "cors";
 const app = express();
 
 // Middleware
-app.use(cors());
+app.use(
+  cors({
+    origin: ["food-api-khaki.vercel.app"],
+    methods: ["POST", "GET"],
+    credentials: true,
+  })
+);
 app.use(bodyParser.json());
 
 const foods = [
@@ -91,9 +97,9 @@ const foods = [
   },
 ];
 
-app.get('/',(req,res)=>{
+app.get("/", (req, res) => {
   res.json("Hello");
-})
+});
 
 app.get("/api/foods", (req, res) => {
   if (req.query.search) {
