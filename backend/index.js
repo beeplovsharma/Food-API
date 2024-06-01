@@ -90,6 +90,11 @@ const foods = [
     category: "sour",
   },
 ];
+
+app.get('/',(req,res)=>{
+  res.json("Hello");
+})
+
 app.get("/api/foods", (req, res) => {
   if (req.query.search) {
     const filteredProducts = foods.filter((food) =>
